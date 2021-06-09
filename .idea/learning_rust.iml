@@ -20,6 +20,10 @@
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/gl-d007ee80cf147d27/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/gl-ea9bb7014ffd2b70/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/khronos_api-a51a485ad33ba036/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/learning_rust-812b8686377975fb/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/sdl2-587891b168dde0ce/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/sdl2-sys-12958f5c21a0d88f/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/winapi-24865a7194e8e439/out" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/lib/gl/target" />
     </content>

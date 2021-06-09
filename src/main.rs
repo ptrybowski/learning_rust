@@ -2,8 +2,13 @@ extern crate gl;
 extern crate sdl2;
 
 pub mod render_gl;
+pub mod resources;
+
+use resources::Resources;
+use std::path::Path;
 
 fn main() {
+    let res = Resources::from_relative_exe_path(Path::new("assets")).unwrap();
     let sdl = sdl2::init().unwrap();
     let video_subsystem = sdl.video().unwrap();
 
@@ -13,7 +18,7 @@ fn main() {
     gl_attr.set_context_version(4, 1);
 
     let window = video_subsystem
-        .window("Game", 900, 700)
+        .window("Game", 1920, 1080)
         .opengl()
         .resizable()
         .build()
@@ -29,24 +34,26 @@ fn main() {
     use std::ffi::CString;
     let vert_shader = render_gl::Shader::from_vert_source(
         &gl,
-        &CString::new(include_str!("triangle.vert")).unwrap(),
+        &CString::new(include_str!("../assets/shaders/triangle.vert")).unwrap(),
     ).unwrap();
 
     let frag_shader = render_gl::Shader::from_frag_source(
         &gl,
-        &CString::new(include_str!("triangle.frag")).unwrap(),
+        &CString::new(include_str!("../assets/shaders/triangle.frag")).unwrap(),
     ).unwrap();
 
-    let shader_program =
-        render_gl::Program::from_shaders(&gl, &[vert_shader, frag_shader]).unwrap();
+
+
+    let shader_program = render_gl::Program::from_res(&gl, &res, "shaders/triangle").unwrap();
+
 
     // set up vertex buffer object
 
     let vertices: Vec<f32> = vec![
         // positions      // colors
-        0.5, -0.5, 0.0, 1.0, 0.0, 0.0, // bottom right
-        -0.5, -0.5, 0.0, 0.0, 1.0, 0.0, // bottom left
-        0.0, 0.5, 0.0, 0.0, 0.0, 1.0, // top
+        1.0, -1.0, 0.0, 1.0, 0.0, 0.0, // bottom right
+        -1.0, -1.0, 0.0, 0.0, 1.0, 0.0, // bottom left
+        0.0, 1.0, 0.0, 0.0, 0.0, 1.0, // top
     ];
 
     let mut vbo: gl::types::GLuint = 0;
@@ -102,7 +109,7 @@ fn main() {
     // set up shared state for window
 
     unsafe {
-        gl.Viewport(0, 0, 900, 700);
+        gl.Viewport(0, 0, 1920, 1080);
         gl.ClearColor(0.3, 0.3, 0.5, 1.0);
     }
 
