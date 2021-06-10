@@ -20,6 +20,6 @@ fn main() {
     );
 
     registry
-        .write_bindings(ProfilingStructGenerator, &mut file_gl)
+        .write_bindings(gl_generator_profiling_struct::ProfilingStructGenerator, &mut file_gl)
         .unwrap();
 }
