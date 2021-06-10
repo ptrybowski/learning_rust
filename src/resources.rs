@@ -3,13 +3,23 @@ use std::fs;
 use std::io::{self,Read};
 use std::ffi;
 
-#[derive(Debug)]
+#[derive(Debug, Fail)]
 
 pub enum Error {
-    Io(io::Error),
+    #[fail(display = "I/O error")]
+    Io(#[cause] io::Error),
+    #[fail(display = "Failed to read Cstring from file that contains 0")]
     FileContainsNil,
+    #[fail(display = "Failed get executable path")]
     FailedToGetExePath,
 }
+
+impl From<io::Error> for Error{
+    fn from(other: io::Error)->Self{
+        Error::Io(other)
+    }
+}
+
 
 pub struct Resources {
     root_path:PathBuf,
@@ -23,6 +33,11 @@ impl Resources {
             root_path: exe_path.join(rel_path)
         })
     }
+
+    pub fn from_exe_path()->Result<Resources,Error>{
+        Resources::from_relative_exe_path(Path::new(""))
+    }
+
     pub fn load_cstring(&self, resource_name: &str)->Result<ffi::CString,Error>{
         let mut file = fs::File::open(
             resource_name_to_path(&self.root_path, resource_name)
@@ -40,11 +55,6 @@ impl Resources {
 }
 
 
-impl From<io::Error> for Error{
-    fn from(other: io::Error)->Self{
-        Error::Io(other)
-    }
-}
 
 fn resource_name_to_path(root_dir: &Path, location: &str)-> PathBuf{
     let mut path: PathBuf = root_dir.into();

@@ -24,6 +24,10 @@
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/sdl2-587891b168dde0ce/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/sdl2-sys-12958f5c21a0d88f/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/winapi-24865a7194e8e439/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/backtrace-fba7b0e054824d81/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/failure_derive-aa638dc02f952a30/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/proc-macro2-4843ad0e7c7e7d5b/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/syn-7ee66d71996559e0/out" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/lib/gl/target" />
     </content>
